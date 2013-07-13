@@ -1,7 +1,18 @@
 Kanban::Application.routes.draw do
+  devise_for :managers
+
   devise_for :testers
 
   devise_for :developers
+
+  namespace :admin do
+    resources :developers
+    resources :testers
+    resources :projects do
+      resources :features
+    end
+    resources :issues
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
