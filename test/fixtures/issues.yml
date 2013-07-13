@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  feature: 
+  developer: 
+  tester: 
+  number: MyString
+  title: MyString
+  self_test: false
+  self_summary: MyText
+  testing_status: MyString
+  testing_summary: MyText
+
+two:
+  feature: 
+  developer: 
+  tester: 
+  number: MyString
+  title: MyString
+  self_test: false
+  self_summary: MyText
+  testing_status: MyString
+  testing_summary: MyText

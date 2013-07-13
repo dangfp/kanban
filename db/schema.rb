@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713064558) do
+ActiveRecord::Schema.define(:version => 20130713071519) do
 
   create_table "developers", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(:version => 20130713064558) do
   end
 
   add_index "features", ["project_id"], :name => "index_features_on_project_id"
+
+  create_table "issues", :force => true do |t|
+    t.integer  "feature_id"
+    t.integer  "developer_id"
+    t.integer  "tester_id"
+    t.string   "number"
+    t.string   "title"
+    t.text     "self_summary"
+    t.string   "testing_status"
+    t.text     "testing_summary"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "project_id"
+  end
+
+  add_index "issues", ["developer_id"], :name => "index_issues_on_developer_id"
+  add_index "issues", ["feature_id"], :name => "index_issues_on_feature_id"
+  add_index "issues", ["project_id"], :name => "index_issues_on_project_id"
+  add_index "issues", ["tester_id"], :name => "index_issues_on_tester_id"
+  add_index "issues", ["testing_status"], :name => "index_issues_on_testing_status"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
