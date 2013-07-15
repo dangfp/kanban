@@ -1,0 +1,13 @@
+<%= simple_form_for(@issue) do |f| %>
+  <%= f.input :project, input_html: {class: 'span6'} %>
+  <%= f.input :feature, input_html: {class: 'span6'} %>
+  <%= f.input :number, input_html: {class: 'span6'} %>
+  <%= f.input :title, input_html: {class: 'span6'} %>
+  <%= f.input :developer, input_html: {class: 'span6'} %>
+  <%= f.input :testing_status, input_html: {class: 'span6'} %>
+  <%= f.input :self_summary, input_html: {class: 'span6'} %>
+  <%= f.input :tester, input_html: {class: 'span6'} %>
+  <%= f.input :testing_status %>
+  <%= f.input :testing_summary %>
+  <%= f.button :submit, class: 'btn btn-success btn-large' %>
+<% end %>
