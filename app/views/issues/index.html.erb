@@ -1,0 +1,31 @@
+<h2>综合接入网关测试用例</h2>
+
+<table class="table table-bordered">
+  <tr>
+    <th>模块</th>
+    <th>用例编号</th>
+    <th>用例描述</th>
+    <th>开发负责人</th>
+    <th>进度</th>
+    <th>开发备注</th>
+    <th>测试负责人</th>
+    <th>测试情况</th>
+    <th>测试备注</th>
+    <th>操作</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <ul>
+    <%= @issues.each do |issue| %>
+      <tr>
+        <%= render issue %>
+        <td><%= link_to '修改',edit_issue_path(issue) %></td>
+        <td><%= link_to '删除',issue, method: :delete, data: { confirm: '确定？' } %></td>
+      </tr>
+    <% end %>
+  </ul>
+</table>
+
+<%= will_paginate @issues %>
+<%= link_to '添加测试用例',new_issue_path %>

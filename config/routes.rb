@@ -5,6 +5,8 @@ Kanban::Application.routes.draw do
 
   devise_for :developers
 
+  resources :issues
+
   namespace :admin do
     resources :developers
     resources :testers
