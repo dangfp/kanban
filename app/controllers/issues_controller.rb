@@ -4,6 +4,13 @@ class IssuesController < ApplicationController
     @issues = Issue.paginate(page: params[:page])
   end
 
+  
+  def show 
+    #debugger
+
+    @issue = Issue.find(params[:id])
+  end
+
   def new
     @issue = Issue.new
     @result = {}
@@ -29,9 +36,12 @@ class IssuesController < ApplicationController
   def create
     # @issue = Issue.new(params[:issue])
 
+#    debugger
 
 
-    @issue = current_feature.issues.build(params[:issue])
+    @current_feature = Feature.find(params[:issue][:feature_id])
+    params[:issue].delete(:feature_id)
+    @issue = @current_feature.issues.build(params[:issue])
 
     if @issue.save
       redirect_to @issue, notice: '测试用例添加成功.'

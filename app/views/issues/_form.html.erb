@@ -4,7 +4,7 @@
   <%= f.input :number, input_html: {class: 'span6'} %>
   <%= f.input :title, input_html: {class: 'span6'} %>
   <%= f.association :developer, collection: Developer.all, prompt: "请选择开发人员" %>
-  <%= f.input :testing_status, input_html: {class: 'span6'} %>
+  <%= f.input :self_testing_status, input_html: {class: 'span6'} %>
   <%= f.input :self_summary, input_html: {class: 'span6'} %>
   <%= f.association :tester, collection: Tester.all, prompt: "请选择测试人员" %>
   <%= f.input :testing_status %>

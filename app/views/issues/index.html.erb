@@ -17,7 +17,7 @@
   </tr>
 
   <ul>
-    <%= @issues.each do |issue| %>
+    <%- @issues.each do |issue| %>
       <tr>
         <%= render issue %>
         <td><%= link_to '修改',edit_issue_path(issue) %></td>
