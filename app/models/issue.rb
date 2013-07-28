@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: issues
+#
+#  id              :integer          not null, primary key
+#  feature_id      :integer
+#  developer_id    :integer
+#  tester_id       :integer
+#  number          :string(255)
+#  title           :string(255)
+#  self_summary    :text
+#  testing_status  :string(255)
+#  testing_summary :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  project_id      :integer
+#
+
 class Issue < ActiveRecord::Base
   include Workflow
 
@@ -25,5 +43,5 @@ class Issue < ActiveRecord::Base
   belongs_to :tester
   belongs_to :project
 
-  attr_accessible :number, :self_summary, :self_test, :testing_status, :testing_summary, :title
+  attr_accessible :number, :self_summary, :self_test, :testing_status, :testing_summary, :title, :developer_id, :tester_id, :project_id
 end

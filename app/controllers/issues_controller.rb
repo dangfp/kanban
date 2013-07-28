@@ -6,10 +6,32 @@ class IssuesController < ApplicationController
 
   def new
     @issue = Issue.new
+    @result = {}
+    Project.all.each do |project|
+      @result[project.id] = project.features.map {|feature| {id: feature.id, name: feature.name} }
+    end
+
+    # @selected_project = Project.find_by_id(params[:project])
+
+    # logger.info "selected_project#{@selected_project}"
+#    @projects = Project.all
+
+ #   @features = Feature.all
+   
+  end
+
+  def update_features
+    selected_project = Project.find(params[:project_id])
+    #binding.pry
+    @features = selected_project.features.map { |f| [f.id, f.name].insert(0, "请选择模块")  }
   end
 
   def create
-    @issue = Issue.new(params[:issue])
+    # @issue = Issue.new(params[:issue])
+
+
+
+    @issue = current_feature.issues.build(params[:issue])
 
     if @issue.save
       redirect_to @issue, notice: '测试用例添加成功.'

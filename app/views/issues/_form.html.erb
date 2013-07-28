@@ -1,13 +1,29 @@
 <%= simple_form_for(@issue) do |f| %>
-  <%= f.input :project, input_html: {class: 'span6'} %>
-  <%= f.input :feature, input_html: {class: 'span6'} %>
+  <%= f.association :project, collection: Project.all, prompt: "请选择项目" %>
+  <%= f.association :feature, collection: [] %>
   <%= f.input :number, input_html: {class: 'span6'} %>
   <%= f.input :title, input_html: {class: 'span6'} %>
-  <%= f.input :developer, input_html: {class: 'span6'} %>
+  <%= f.association :developer, collection: Developer.all, prompt: "请选择开发人员" %>
   <%= f.input :testing_status, input_html: {class: 'span6'} %>
   <%= f.input :self_summary, input_html: {class: 'span6'} %>
-  <%= f.input :tester, input_html: {class: 'span6'} %>
+  <%= f.association :tester, collection: Tester.all, prompt: "请选择测试人员" %>
   <%= f.input :testing_status %>
   <%= f.input :testing_summary %>
   <%= f.button :submit, class: 'btn btn-success btn-large' %>
 <% end %>
+
+<script>
+  var projects = <%=raw @result.to_json %>;
+
+  $(document).ready(function() {
+    $('#issue_project_id').change(function() {
+      var selected_value = $(this).val();
+      var features = projects[selected_value]
+      var option_html = [];
+      $.each(features, function(i, feature) {
+        option_html.push("<option value='" + feature.id + "'>" + feature.name + "</option>")
+      });
+      $("#issue_feature_id").html(option_html.join(''));
+    });
+  });
+</script>

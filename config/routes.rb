@@ -7,6 +7,8 @@ Kanban::Application.routes.draw do
 
   resources :issues
 
+  get 'issues/new/update_features', :as => 'update_features'
+
   namespace :admin do
     resources :developers
     resources :testers

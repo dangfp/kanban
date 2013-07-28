@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.13'
 
@@ -24,6 +24,9 @@ end
 
 group  :development do
   gem 'awesome_print'
+  gem 'annotate'
+  gem 'debugger'
+  gem 'pry'
 end
 gem 'jquery-rails'
 
