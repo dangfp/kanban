@@ -27,26 +27,48 @@ class IssuesController < ApplicationController
    
   end
 
-  def update_features
-    selected_project = Project.find(params[:project_id])
-    #binding.pry
-    @features = selected_project.features.map { |f| [f.id, f.name].insert(0, "请选择模块")  }
-  end
+#  def update_features
+#    selected_project = Project.find(params[:project_id])
+#    #binding.pry
+#    @features = selected_project.features.map { |f| [f.id, f.name].insert(0, "请选择模块")  }
+#  end
 
   def create
-    # @issue = Issue.new(params[:issue])
-
-#    debugger
-
 
     @current_feature = Feature.find(params[:issue][:feature_id])
     params[:issue].delete(:feature_id)
     @issue = @current_feature.issues.build(params[:issue])
 
     if @issue.save
-      redirect_to @issue, notice: '测试用例添加成功.'
+      redirect_to issues_path, notice: '测试用例添加成功.'
     else
       render action: 'new'
     end
+  end
+
+  def edit
+    @issue = Issue.find(params[:id])
+
+    @result = {}
+    Project.all.each do |project|
+      @result[project.id] = project.features.map { |feature| {id: feature.id, name: feature.name} }
+    end
+  end
+
+  def update
+    @issue = Issue.find(params[:id])
+
+    params[:issue].delete(:feature_id)
+    if @issue.update_attributes(params[:issue])
+      redirect_to issues_path, notice: '修改测试用例成功'
+    else
+      render action: 'edit'
+    end
+  end
+
+  def destroy
+    @issue = Issue.find(params[:id])
+    @issue.destroy
+    redirect_to issues_path, notice: '删除测试用例成功'
   end
 end

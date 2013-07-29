@@ -1,6 +1,7 @@
 <%= simple_form_for(@issue) do |f| %>
   <%= f.association :project, collection: Project.all, prompt: "请选择项目" %>
-  <%= f.association :feature, collection: [] %>
+  <!-- <%= f.association :feature, collection: [] %> -->
+  <%= f.association :feature, collection: Feature.all %>
   <%= f.input :number, input_html: {class: 'span6'} %>
   <%= f.input :title, input_html: {class: 'span6'} %>
   <%= f.association :developer, collection: Developer.all, prompt: "请选择开发人员" %>
