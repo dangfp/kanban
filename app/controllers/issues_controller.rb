@@ -1,7 +1,10 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
   def index
-    @issues = Issue.paginate(page: params[:page])
+    # @issues = Issue.paginate(page: params[:page])
+
+    @search = Issue.search(params[:q])
+    @issues = @search.result
   end
 
   
