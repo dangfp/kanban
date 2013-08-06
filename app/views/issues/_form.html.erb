@@ -14,12 +14,12 @@
 <% end %>
 
 <script>
-  var projects = <%=raw @result.to_json %>;
+  var features_of_selected_project = <%=raw @result.to_json %>;
 
   $(document).ready(function() {
     $('#issue_project_id').change(function() {
       var selected_value = $(this).val();
-      var features = projects[selected_value]
+      var features = features_of_selected_project[selected_value]
       var option_html = [];
       $.each(features, function(i, feature) {
         option_html.push("<option value='" + feature.id + "'>" + feature.name + "</option>")
