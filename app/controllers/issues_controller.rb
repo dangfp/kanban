@@ -4,7 +4,8 @@ class IssuesController < ApplicationController
     # @issues = Issue.paginate(page: params[:page])
 
     @search = Issue.search(params[:q])
-    @issues = @search.result
+    @issues = @search.result.paginate(per_page: 1, page: params[:page])
+    @issues = Issue.paginate(per_page: 1, page: params[:page])
   end
 
   
