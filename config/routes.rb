@@ -9,6 +9,10 @@ Kanban::Application.routes.draw do
 
   resources :issues
 
+  resources :issues do
+    collection { post :import }
+  end
+
   get 'issues/new/update_features', :as => 'update_features'
 
   namespace :admin do

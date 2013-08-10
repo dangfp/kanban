@@ -4,8 +4,8 @@ class IssuesController < ApplicationController
     # @issues = Issue.paginate(page: params[:page])
 
     @search = Issue.search(params[:q])
-    @issues = @search.result.paginate(per_page: 1, page: params[:page])
-    @issues = Issue.paginate(per_page: 1, page: params[:page])
+    @issues = @search.result.paginate(per_page: 50, page: params[:page])
+    @issues = Issue.paginate(per_page: 50, page: params[:page])
   end
 
   
@@ -74,5 +74,10 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
     @issue.destroy
     redirect_to issues_path, notice: '删除测试用例成功'
+  end
+
+  def import
+    Issue.import(params[:file])
+    redirect_to issues_path, notice: "Issue imported."
   end
 end

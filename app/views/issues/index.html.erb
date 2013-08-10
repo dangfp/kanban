@@ -10,6 +10,12 @@
   <%= f.submit "查询" %>
 <% end %>
 
+<p>
+   Download:
+   <%= link_to "CSV", issues_path(format: "csv") %> |
+   <%= link_to "Excel", issues_path(format: "xls") %>
+</p>
+
 <table class="table table-bordered">
   <tr>
     <th><%= sort_link @search, :feature_name, "模块" %></th>
@@ -36,3 +42,10 @@
 
 <%= will_paginate @issues %>
 <%= link_to '添加测试用例',new_issue_path %>
+
+<h2>Import Issues</h2>
+
+<%= form_tag import_issues_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
