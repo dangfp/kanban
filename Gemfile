@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'simple_form'
 gem 'ransack'
+gem 'statistics'
 
 # Gems used only for assets and not required
 # in production environments by default.

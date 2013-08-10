@@ -1,0 +1,29 @@
+<h1>统计</h1>
+
+<h2>开发相关</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>模块</th>
+    <th>总数</th>
+    <th>未开发数量</th>
+    <th>未开发数量百分比</th>
+    <th>开发中数量</th>
+    <th>开发中数量百分比</th>
+    <th>自测通过数量</th>
+    <th>自测通过率</th>
+  </tr>
+  <%= render 'develop_form' %>
+</table>
+
+<h2>测试相关</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>模块</th>
+    <th>总数</th>
+    <th>未测试数量</th>
+    <th>未测试数量百分比</th>
+    <th>测通过数量</th>
+    <th>测通过率</th>
+  </tr>
+  <%= render 'test_form' %>
+</table>

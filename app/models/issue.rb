@@ -45,4 +45,12 @@ class Issue < ActiveRecord::Base
 
   #attr_accessible :number, :self_summary, :self_test, :testing_status, :testing_summary, :title, :developer_id, :tester_id, :project_id
   attr_accessible :number, :title,:self_testing_status, :self_summary, :self_test, :testing_status, :testing_summary,:developer_id, :tester_id, :project_id
+
+#统计数字定义
+  define_statistic :total_issues_count, count: :all
+  define_statistic :issues_count_of_project, count: :all, column_name: 'project.id', joins: :project
+  define_statistic :throughput_issues_count_of_project, count: :all, conditions: "testing_status = √√", column_name: 'project.id', joins: :project
+  define_calculated_statistic :throughput_rate do
+    defined_stats(:throughput_issues_count_of_project) / defined_stats(:issues_count_of_project)
+  end
 end
