@@ -3,7 +3,7 @@
 <h2>开发相关</h2>
 <table class="table table-bordered">
   <tr>
-    <th>模块</th>
+    <th>项目名称</th>
     <th>总数</th>
     <th>未开发数量</th>
     <th>未开发数量百分比</th>
@@ -12,13 +12,23 @@
     <th>自测通过数量</th>
     <th>自测通过率</th>
   </tr>
-  <%= render 'develop_form' %>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td><%= project.issues.count %></td>
+      <td><%= project.issues.where("self_testing_status = ?", '未开发').count %></td>
+      <td></td>
+      <td><%= project.issues.where("self_testing_status = ?", '开发中').count %></td>
+      <td></td>
+      <td><%= project.issues.where("self_testing_status = ?", '自测通过').count %></td>
+    </tr>
+  <% end %>
 </table>
 
 <h2>测试相关</h2>
 <table class="table table-bordered">
   <tr>
-    <th>模块</th>
+    <th>项目名称</th>
     <th>总数</th>
     <th>未测试数量</th>
     <th>未测试数量百分比</th>
