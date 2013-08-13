@@ -12,16 +12,17 @@
     <th>自测通过数量</th>
     <th>自测通过率</th>
   </tr>
-  <% @projects.each do |project| %>
+  <% @results.each do |result| %>
     <tr>
-      <td><%= project.name %></td>
-      <td><%= project.issues.count %></td>
-      <td><%= project.issues.where("self_testing_status = ?", '未开发').count %></td>
-      <td></td>
-      <td><%= project.issues.where("self_testing_status = ?", '开发中').count %></td>
-      <td></td>
-      <td><%= project.issues.where("self_testing_status = ?", '自测通过').count %></td>
-    </tr>
+    <td><%= result[:project_name] %></td>
+    <td><%= result[:issues_count_of_project] %></td>
+    <td><%= result[:new_issues_count_of_project] %></td>
+    <td></td>
+    <td><%= result[:in_development_issues_count_of_project] %></td>
+    <td></td>
+    <td><%= result[:self_tested_issues_count_of_project] %></td>
+    <td></td>
+  </tr>
   <% end %>
 </table>
 
