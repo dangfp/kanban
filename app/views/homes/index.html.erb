@@ -40,15 +40,15 @@
   </tr>
   <% @results.each do |result| %>
     <tr>
-    <td><%= result[:project_name] %></td>
-    <td><%= result[:issues_count_of_project] %></td>
-    <td><%= result[:not_test_issues_count_of_project] %></td>
-    <td><%= result[:not_test_issues_rate] %></td>
-    <td><%= result[:tested_successful_issues_count_of_project] %></td>
-    <td><%= result[:tested_successful_issues_rate] %></td>
-    <td><%= result[:tested_fail_issues_count_of_project] %></td>
-    <td><%= result[:tested_fail_issues_rate] %></td>
-  </tr>
+      <td><%= link_to result[:project_name], issues_path(project_id: result[:project_id]) %></td>
+      <td><%= result[:issues_count_of_project] %></td>
+      <td><%= result[:not_test_issues_count_of_project] %></td>
+      <td><%= result[:not_test_issues_rate] %></td>
+      <td><%= result[:tested_successful_issues_count_of_project] %></td>
+      <td><%= result[:tested_successful_issues_rate] %></td>
+      <td><%= result[:tested_fail_issues_count_of_project] %></td>
+      <td><%= result[:tested_fail_issues_rate] %></td>
+    </tr>
   <% end %>
 </table>
 

@@ -31,7 +31,7 @@ class IssuesController < ApplicationController
     @issue = @current_feature.issues.build(params[:issue])
 
     if @issue.save
-      redirect_to issues_path, notice: '测试用例添加成功.'
+      redirect_to issues_path(project_id: params[:project_id]), notice: '测试用例添加成功.'
     else
       render action: 'new'
     end
