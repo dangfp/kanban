@@ -12,17 +12,8 @@
     <th>自测通过数量</th>
     <th>自测通过率</th>
   </tr>
-  <% @results.each do |result| %>
-    <tr>
-      <td><%= link_to result[:project_name], issues_path(project_id: result[:project_id]) %></td>
-    <td><%= result[:issues_count_of_project] %></td>
-    <td><%= result[:new_issues_count_of_project] %></td>
-    <td><%= result[:new_issues_rate] %></td>
-    <td><%= result[:in_development_issues_count_of_project] %></td>
-    <td><%= result[:in_development_issues_rate] %></td>
-    <td><%= result[:self_tested_issues_count_of_project] %></td>
-    <td><%= result[:self_tested_issues_rate] %></td>
-  </tr>
+  <% @results.each do |develop_stats| %>
+    <%= render develop_stats %>
   <% end %>
 </table>
 
@@ -51,9 +42,3 @@
   </tr>
   <% end %>
 </table>
-
-<!--
-<% @projects.each do |project| %>
-  <%= link_to project.name, issues_path(project_id: project.id) %>
-<% end %>
--->

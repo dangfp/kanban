@@ -16,6 +16,7 @@ class HomesController < ApplicationController
                                    tested_fail_issues_count_of_project = project.issues.where("testing_status = ?" , '测试失败').count
 
                                   {  project_name: project.name, 
+                                     project_id: project.id,
                                      issues_count_of_project: issues_count_of_project,
 
                                      new_issues_count_of_project: new_issues_count_of_project,

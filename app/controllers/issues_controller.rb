@@ -1,11 +1,11 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
   def index
-    # @issues = Issue.paginate(page: params[:page])
-
-    @search = Issue.search(params[:q])
-    @issues = @search.result.paginate(per_page: 50, page: params[:page])
-    @issues = Issue.paginate(per_page: 50, page: params[:page])
+      @project_id = params[:project_id]
+      @search = Issue.search(params[:q])
+      @results = @search.result
+      @issues = @results.where(project_id: 2).paginate(page: params[:page], per_page: 50)
+      @issues = Issue.where(project_id: params[:project_id]).paginate(page: params[:page], per_page: 50) unless params[:q]
   end
 
   
@@ -21,21 +21,8 @@ class IssuesController < ApplicationController
     Project.all.each do |project|
       @result[project.id] = project.features.map {|feature| {id: feature.id, name: feature.name} }
     end
-
-    # @selected_project = Project.find_by_id(params[:project])
-
-    # logger.info "selected_project#{@selected_project}"
-#    @projects = Project.all
-
- #   @features = Feature.all
-   
   end
 
-#  def update_features
-#    selected_project = Project.find(params[:project_id])
-#    #binding.pry
-#    @features = selected_project.features.map { |f| [f.id, f.name].insert(0, "请选择模块")  }
-#  end
 
   def create
 
