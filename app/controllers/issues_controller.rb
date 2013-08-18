@@ -1,11 +1,16 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
   def index
-      @project_id = params[:project_id]
+      if params[:project_id] != nil
+        cookies[:project_name] = params[:project_name]
+        cookies[:project_id] = params[:project_id]
+        
+      end
+      # @project_id = params[:project_id]
       @search = Issue.search(params[:q])
       @results = @search.result
-      @issues = @results.where(project_id: 2).paginate(page: params[:page], per_page: 50)
-      @issues = Issue.where(project_id: params[:project_id]).paginate(page: params[:page], per_page: 50) unless params[:q]
+      @issues = @results.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 50)
+      @issues = Issue.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 50) unless params[:q]
   end
 
   
@@ -31,7 +36,7 @@ class IssuesController < ApplicationController
     @issue = @current_feature.issues.build(params[:issue])
 
     if @issue.save
-      redirect_to issues_path(project_id: params[:project_id]), notice: '测试用例添加成功.'
+      redirect_to issues_path(project_id: cookies[:project_id]), notice: '测试用例添加成功.'
     else
       render action: 'new'
     end
