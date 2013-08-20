@@ -6,7 +6,6 @@ class IssuesController < ApplicationController
         cookies[:project_id] = params[:project_id]
         
       end
-      # @project_id = params[:project_id]
       @search = Issue.search(params[:q])
       @results = @search.result
       @issues = @results.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 50)
@@ -36,7 +35,7 @@ class IssuesController < ApplicationController
     @issue = @current_feature.issues.build(params[:issue])
 
     if @issue.save
-      redirect_to issues_path(project_id: cookies[:project_id]), notice: '测试用例添加成功.'
+      redirect_to issues_path(project_id: cookies[:project_id], project_name: cookies[:project_name]), notice: '测试用例添加成功.'
     else
       render action: 'new'
     end
@@ -56,7 +55,7 @@ class IssuesController < ApplicationController
 
     params[:issue].delete(:feature_id)
     if @issue.update_attributes(params[:issue])
-      redirect_to issues_path, notice: '修改测试用例成功'
+      redirect_to issues_path(project_id: cookies[:project_id], project_name: cookies[:project_name]), notice: '修改测试用例成功'
     else
       render action: 'edit'
     end
@@ -65,7 +64,7 @@ class IssuesController < ApplicationController
   def destroy
     @issue = Issue.find(params[:id])
     @issue.destroy
-    redirect_to issues_path, notice: '删除测试用例成功'
+    redirect_to issues_path(project_id: cookies[:project_id],project_name: cookies[:project_name]), notice: '删除测试用例成功'
   end
 
   def import
