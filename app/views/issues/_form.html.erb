@@ -8,7 +8,7 @@
   <%= f.input :self_testing_status, collection: ['未开发','开发中','自测通过'], prompt: "请选择开发状态" %>
   <%= f.input :self_summary, input_html: {class: 'span6'} %>
   <%= f.association :tester, collection: Tester.all, prompt: "请选择测试人员" %>
-  <%= f.input :testing_status, collection: ['未测试','测试通过','测试失败'], prompt: "请选择验证状态" %>
+  <%= f.input :testing_status, collection: ["未测试","测试通过","测试失败"], prompt: "请选择测试状态" %>
   <%= f.input :testing_summary %>
   <%= f.button :submit, class: 'btn btn-success btn-large' %>
 <% end %>

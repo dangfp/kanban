@@ -12,6 +12,7 @@ gem 'simple_form'
 gem 'ransack'
 gem 'statistics'
 gem 'roo'
+gem 'bootstrap-sass'
 
 # Gems used only for assets and not required
 # in production environments by default.
