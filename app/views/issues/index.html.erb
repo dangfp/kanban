@@ -1,11 +1,14 @@
 <h2><%= cookies[:project_name].to_s + "测试用例" %></h2>
 
 <%= search_form_for @search do |f| %>
-  <%= f.label :title_conf, "用例描述" %>
-  <%= f.text_field :title_cont %>
+  <%= f.label :self_testing_status_conf, "开发进度" %>
+  <%= f.text_field :self_testing_status_cont %>
 
-  <%= f.label :feature_name_conf, "模块名称" %>
-  <%= f.text_field :feature_name_cont %>
+  <%= f.label :developer_name_conf, "开发负责人" %>
+  <%= f.text_field :developer_name_cont %>
+
+  <%= f.label :testing_status_conf, "测试情况" %>
+  <%= f.text_field :testing_status_cont %>
 
   <%= f.submit "查询" %>
 <% end %>
@@ -18,14 +21,14 @@
 
 <table class="table table-bordered">
   <tr>
-    <th><%= sort_link @search, :feature_name, "模块" %></th>
+    <th>模块</th>
     <th>用例编号</th>
     <th>用例描述</th>
-    <th>开发负责人</th>
-    <th>进度</th>
+    <th><%= sort_link @search, :developer_name, "开发负责人" %></th>
+    <th><%= sort_link @search, :self_testing_status, "开发进度" %></th>
     <th>开发备注</th>
     <th>测试负责人</th>
-    <th>测试情况</th>
+    <th><%= sort_link @search, :testing_status, "测试情况" %></th>
     <th>测试备注</th>
     <th>操作</th>
     <th></th>
