@@ -1,17 +1,17 @@
 <h2><%= cookies[:project_name].to_s + "测试用例" %></h2>
 <div class = "row">
-  <div class = "span12 offset1">
+  <div class = "field span2 offset1">
     <%= search_form_for @search do |f| %>
-      <%= f.label :self_testing_status_conf, "开发进度" %>
-      <%= f.text_field :self_testing_status_cont %>
+      <%= f.label :self_testing_status_cont, "开发进度" %>
+      <%= f.select :self_testing_status_cont,  ['未开发','开发中','自测通过'], include_blank: true %>
 
-      <%= f.label :developer_name_conf, "开发负责人" %>
-      <%= f.text_field :developer_name_cont %>
+      <%= f.label :developer_name_cont, "开发负责人" %>
+      <%= f.select :developer_name_cont, Developer.all, include_blank: true %>
 
-      <%= f.label :testing_status_conf, "测试情况" %>
-      <%= f.text_field :testing_status_cont %>
+      <%= f.label :testing_status_cont, "测试情况" %>
+      <%= f.select :testing_status_cont, ['未测试','测试通过','测试失败'], include_blank: true %>
 
-      <%= f.submit "查询", class: 'btn btn-success btn-large' %>
+      <div class="actions"><%= f.submit "查询", class: 'btn' %></div>
     <% end %>
   </div>
 </div>
@@ -27,7 +27,7 @@
 
 <table class="table table-bordered">
   <tr>
-    <th>模块</th>
+    <th><%= sort_link @search, :feature_name, "模块" %></th>
     <th>用例编号</th>
     <th>用例描述</th>
     <th><%= sort_link @search, :developer_name, "开发负责人" %></th>
@@ -43,7 +43,8 @@
 <% @issues.each do |issue| %>
   <tr>
     <%= render issue %>
-    <td><%= link_to '修改',edit_issue_path(issue) %></td>
+    <!--  <td><%= link_to '修改',edit_issue_path(issue) %></td> -->
+    <td><%= link_to '修改',edit_issue_path(issue, project_id: cookies[:project_id]) %></td>
     <td><%= link_to '删除',issue, method: :delete, data: { confirm: '确定？' } %></td>
   </tr>
 <% end %>
@@ -51,7 +52,7 @@
 
 <%= will_paginate @issues %>
 <div class = "offset1">
-  <%= link_to '添加测试用例',new_issue_path %>
+  <%= link_to '添加测试用例',new_issue_path(project_id: cookies[:project_id]) %>
 </div>
 
 
