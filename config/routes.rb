@@ -16,6 +16,7 @@ Kanban::Application.routes.draw do
   get 'issues/new/update_features', :as => 'update_features'
 
   namespace :admin do
+    root to: 'dashboard#index'
     resources :developers
     resources :testers
     resources :projects do

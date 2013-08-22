@@ -31,11 +31,13 @@ $grayDarker: #222;
 html {
   overflow-y: scroll;
 }
+/*
 body {
   padding-top: 60px;
   padding-left: 30px;
   padding-right: 30px;
 }
+  */
 section { 
  overflow: auto;
 }
@@ -74,6 +76,7 @@ p{
 }
 
 /* header */
+/*
 #logo {
   float: left; 
   margin-right: 10px; 
@@ -89,7 +92,7 @@ p{
       text-decoration: none;
   }
 }
-
+*/
 
 /*footer*/
 
@@ -121,7 +124,6 @@ footer {
  
  input, textarea, select, .uneditable-input {
    border: 1px solid #bbb;
-   width: 100%;
    padding: 10px;
    height: auto !important;
    margin-bottom: 15px;
