@@ -25,7 +25,7 @@ end
   Project.all.second.features.create!(name: name)
 end
  
-DEFAULT_PASSWORD = '123456acb'
+DEFAULT_PASSWORD = '123456789'
 
 developer = Developer.create!(email: 'zhangsan@163.com',
                               password: DEFAULT_PASSWORD,
@@ -41,3 +41,10 @@ tester = Tester.create!(email: 'lisi@163.com',
                         name: '李四'
                        )
 tester.save!
+
+manager= Manager.create!(email: 'manager@leadtone.com',
+                        password: DEFAULT_PASSWORD,
+                        password_confirmation: DEFAULT_PASSWORD,
+                        name: '管理员'
+                       )
+manager.save!

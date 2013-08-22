@@ -26,6 +26,14 @@
             <% else %>
               <li><%= link_to '测试人员登录', new_tester_session_path %></li>
             <% end %>
+
+            <% if manager_signed_in? %>
+              <li><%= link_to current_manager.name %></li>
+              <li><%= link_to '管理后台', admin_root_path %></li>
+              <li><%= link_to '退出', destroy_tester_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to '管理员登录', new_manager_session_path %></li>
+            <% end %>
             </ul>
           </div>
         </div>

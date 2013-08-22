@@ -1,5 +1,8 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
+#  before_filter :authenticate_developer! 
+#  before_filter :authenticate_tester!
+
   def index
       if params[:project_id] != nil
         cookies[:project_name] = params[:project_name]
