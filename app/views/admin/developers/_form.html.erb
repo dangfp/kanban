@@ -1,0 +1,5 @@
+<%= simple_form_for[:admin, @developer] do |f| %>
+  <%= f.input :name, input_html: {class: 'span6'} %>
+  <%= f.input :email, input_html: {class: 'span6'} %>
+  <%= f.button :submit, class: 'btn btn-success btn-large' %>
+<% end %>
