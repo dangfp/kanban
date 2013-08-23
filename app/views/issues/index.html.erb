@@ -1,6 +1,4 @@
 <h2><%= cookies[:project_name].to_s + "测试用例" %></h2>
-<div class = "row">
-  <div class = "field span2 offset1">
     <%= search_form_for @search do |f| %>
       <%= f.label :self_testing_status_cont, "开发进度" %>
       <%= f.select :self_testing_status_cont,  ['未开发','开发中','自测通过'], include_blank: true %>
@@ -13,8 +11,6 @@
 
       <div class="actions"><%= f.submit "查询", class: 'btn' %></div>
     <% end %>
-  </div>
-</div>
 <div class = "row">
   <div class = "offset1">
       <p>

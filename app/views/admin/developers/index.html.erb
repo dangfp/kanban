@@ -11,12 +11,13 @@
       <%= render developer %>
       <td>
         <%= link_to '修改', edit_admin_developer_path(developer) %>
-        <%= link_to '删除', admin_developer_path(developer), method: :delete, conifrm: '确认删除?' %>
+        <%= link_to '删除', admin_developer_path(developer), method: :delete, confirm: '确认删除?' %>
     </tr>
   <% end %>
 </table>
 
 <div class="row">
+  <!-- <%= link_to '添加', new_developer_registration_path %> -->
   <%= link_to '添加', new_admin_developer_path %>
 </div>
 

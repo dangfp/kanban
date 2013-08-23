@@ -1,5 +1,7 @@
-<%= simple_form_for[:admin, @developer] do |f| %>
+<%= simple_form_for @developer, url: new_admin_developer_path, method: :get do |f| %>
   <%= f.input :name, input_html: {class: 'span6'} %>
   <%= f.input :email, input_html: {class: 'span6'} %>
-  <%= f.button :submit, class: 'btn btn-success btn-large' %>
+  <%= f.input :password, input_html: {class: 'span6'} %>
+  <%= f.input :password_confirmation, input_html: {class: 'span6'} %>
+  <%= f.button :submit, class: 'btn' %>
 <% end %>

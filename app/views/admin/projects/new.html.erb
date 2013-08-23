@@ -1,0 +1,6 @@
+<h2>添加项目</h2>
+
+<%= simple_form_for @project, url: new_admin_project_path, method: :get  do |f| %>
+  <%= f.input :name, input_html: {class: 'span6'} %>
+  <%= f.submit '提交', class: 'btn' %>
+<% end %>

@@ -9,7 +9,7 @@ class Admin::DevelopersController < Admin::ApplicationController
 
   def create
     @developer = Developer.new(params[:developer])
-    if @developer.save!
+    if @developer.save
        redirect_to admin_developers
     else
        render :new
