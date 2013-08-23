@@ -6,7 +6,7 @@ class Ability
     if user.has_role?(:root)
       can :manage, :all
     else
-      can :manage, Issue
+      can :read, Issue
     end
     # Define abilities for the passed in user here. For example:
     #

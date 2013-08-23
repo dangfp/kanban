@@ -1,16 +1,20 @@
 <h2><%= cookies[:project_name].to_s + "测试用例" %></h2>
+<div class="row">
+  <form class="form-inline">
     <%= search_form_for @search do |f| %>
       <%= f.label :self_testing_status_cont, "开发进度" %>
       <%= f.select :self_testing_status_cont,  ['未开发','开发中','自测通过'], include_blank: true %>
 
       <%= f.label :user_name_cont, "开发负责人" %>
-      <%= f.select :user_name_cont, User.all, include_blank: true %>
+      <%= f.select :user_name_cont, User.where('roles_mask = ?', '4'), include_blank: true %>
 
       <%= f.label :testing_status_cont, "测试情况" %>
       <%= f.select :testing_status_cont, ['未测试','测试通过','测试失败'], include_blank: true %>
 
-      <div class="actions"><%= f.submit "查询", class: 'btn' %></div>
+      <%= f.submit "查询", class: 'btn' %>
     <% end %>
+  </form>
+  </div>
 <div class = "row">
   <div class = "offset1">
       <p>

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
 
-  roles :root, :admin
+  roles :root, :admin, :developer, :tester
 
   def to_s
     name
@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   def can_access_admin?
      self.has_role?(:root) || self.has_role?(:admin)
    end
+
+  def can_access_developer?
+    self.has_role?(:developer)
+  end
 end

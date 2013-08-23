@@ -1,7 +1,6 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
-#  before_filter :authenticate_developer! 
-#  before_filter :authenticate_tester!
+#  before_filter :authenticate_user!
 
   def index
       if params[:project_id] != nil
@@ -9,6 +8,7 @@ class IssuesController < ApplicationController
         cookies[:project_id] = params[:project_id]
         
       end
+
       @search = Issue.search(params[:q])
       @results = @search.result
       @issues = @results.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 50)

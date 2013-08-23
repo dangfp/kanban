@@ -50,13 +50,29 @@
 #manager.save!
 
 DEFAULT_PASSWORD = '123456789'
- u = User.create!(:email => 'root@example.com',
+ #u = User.create!(:email => 'root@example.com',
+ #                 :password => DEFAULT_PASSWORD,  
+ #                 :password_confirmation => DEFAULT_PASSWORD
+ #                )
+ #u.roles << :root           
+ #u.save!                    
+
+ #developer = User.create!(:email => 'lisi@example.com',
+ #                 :password => DEFAULT_PASSWORD,  
+ #                 :password_confirmation => DEFAULT_PASSWORD
+ #                )
+ #developer.roles << :developer
+ #developer.save!                    
+
+
+ tester = User.create!(:email => 'wangwu@126.com',
                   :password => DEFAULT_PASSWORD,  
                   :password_confirmation => DEFAULT_PASSWORD
                  )
- u.roles << :root           
- u.save!                    
- 
+ tester.roles << :tester
+ tester.save!       
+
+
  puts "=== First user created ==="
- puts "Email: #{u.email}"   
+ puts "Email: #{tester.email}"   
  puts "Password: #{DEFAULT_PASSWORD}" 

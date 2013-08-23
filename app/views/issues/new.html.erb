@@ -2,9 +2,5 @@
   <h2><%= "新建"+cookies[:project_name].to_s+"测试用例" %></h2>
 </div>
 
-<div class = "row">
-  <div class = "span2 offset2">
-    <%= render 'form' %>
-    <%= link_to '返回', issues_path(project_id: cookies[:project_id], project_name: cookies[:project_name]) %>
-  </div>
-</div>
+<%= render 'form' %>
+<%= link_to '返回', issues_path(project_id: cookies[:project_id], project_name: cookies[:project_name]) %>
