@@ -1,4 +1,6 @@
 Kanban::Application.routes.draw do
+  devise_for :users
+
   root to: 'homes#index'
 
   devise_for :managers

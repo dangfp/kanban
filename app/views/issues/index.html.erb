@@ -3,8 +3,8 @@
       <%= f.label :self_testing_status_cont, "开发进度" %>
       <%= f.select :self_testing_status_cont,  ['未开发','开发中','自测通过'], include_blank: true %>
 
-      <%= f.label :developer_name_cont, "开发负责人" %>
-      <%= f.select :developer_name_cont, Developer.all, include_blank: true %>
+      <%= f.label :user_name_cont, "开发负责人" %>
+      <%= f.select :user_name_cont, User.all, include_blank: true %>
 
       <%= f.label :testing_status_cont, "测试情况" %>
       <%= f.select :testing_status_cont, ['未测试','测试通过','测试失败'], include_blank: true %>
@@ -26,7 +26,8 @@
     <th><%= sort_link @search, :feature_name, "模块" %></th>
     <th>用例编号</th>
     <th>用例描述</th>
-    <th><%= sort_link @search, :developer_name, "开发负责人" %></th>
+    <!-- <th><%= sort_link @search, :developer_name, "开发负责人" %></th> -->
+    <th><%= sort_link @search, :user_name, "开发负责人" %></th> 
     <th><%= sort_link @search, :self_testing_status, "开发进度" %></th>
     <th>开发备注</th>
     <th>测试负责人</th>

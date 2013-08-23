@@ -38,6 +38,7 @@ GEM
     bootstrap-will_paginate (0.0.6)
       will_paginate
     builder (3.0.4)
+    cancan (1.6.10)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -115,6 +116,7 @@ GEM
       polyamorous (~> 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    role_model (0.8.1)
     roo (1.11.2)
       nokogiri
       rubyzip
@@ -160,6 +162,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass
   bootstrap-will_paginate
+  cancan
   coffee-rails (~> 3.2.1)
   debugger
   devise
@@ -168,6 +171,7 @@ DEPENDENCIES
   pry
   rails (= 3.2.13)
   ransack
+  role_model
   roo
   sass-rails (~> 3.2.3)
   simple_form

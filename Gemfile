@@ -13,6 +13,8 @@ gem 'ransack'
 gem 'statistics'
 gem 'roo'
 gem 'bootstrap-sass'
+gem 'cancan'
+gem 'role_model'
 
 # Gems used only for assets and not required
 # in production environments by default.
