@@ -3,11 +3,6 @@ Kanban::Application.routes.draw do
 
   root to: 'homes#index'
 
-  devise_for :managers
-
-  devise_for :testers
-
-  devise_for :developers
 
   resources :issues
 
@@ -19,8 +14,7 @@ Kanban::Application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#index'
-    resources :developers
-    resources :testers
+    resources :users
     resources :projects do
       resources :features
     end
