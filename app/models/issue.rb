@@ -40,14 +40,14 @@ class Issue < ActiveRecord::Base
 #    state :NA
 #  end
   belongs_to :feature
-  belongs_to :developer
-  belongs_to :tester
+  belongs_to :developer, class_name: User, foreign_key: 'developer_id' 
+  belongs_to :tester, class_name: User, foreign_key: 'tester_id'
   belongs_to :project
-  belongs_to :user
+#  belongs_to :user
 
   #attr_accessible :number, :self_summary, :self_test, :testing_status, :testing_summary, :title, :developer_id, :tester_id, :project_id
   attr_accessible :number, :title,:self_testing_status, :self_summary, :self_test, :testing_status,
-                  :testing_summary,:developer_id, :tester_id, :project_id, :user_id
+                  :testing_summary,:developer_id, :tester_id, :project_id
 
 #统计数字定义
 #  define_statistic :total_issues_count, count: :all

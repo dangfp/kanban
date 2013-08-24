@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def can_access_developer?
     self.has_role?(:developer)
   end
+
+  def can_access_tester?
+    self.has_role?(:tester)
+  end
 end
