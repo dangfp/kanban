@@ -44,14 +44,14 @@
     <%= render issue %>
     <!--  <td><%= link_to '修改',edit_issue_path(issue) %></td> -->
     <td><%= link_to '修改',edit_issue_path(issue, project_id: cookies[:project_id]) %></td>
-    <td><%= link_to '删除',issue, method: :delete, data: { confirm: '确定？' } %></td>
+      <td><%= link_to '删除',issue, method: :delete, data: { confirm: '确定？' } %></td>
   </tr>
 <% end %>
 </table>
 
 <%= will_paginate @issues %>
 <div class = "offset1">
-  <%= link_to '添加测试用例',new_issue_path(project_id: cookies[:project_id]) %>
+    <%= link_to '添加测试用例',new_issue_path(project_id: cookies[:project_id]) %>
 </div>
 
 
