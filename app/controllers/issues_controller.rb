@@ -1,6 +1,7 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
-#  before_filter :authenticate_user!
+  before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
       if params[:project_id] != nil
@@ -24,6 +25,9 @@ class IssuesController < ApplicationController
 
   def new
     @issue = Issue.new
+    @issue.self_testing_status = "未开发"
+    #@issue.developer = User.name.where('roles_mask = ?','4')
+
     @result = {}
     Project.all.each do |project|
       @result[project.id] = project.features.map {|feature| {id: feature.id, name: feature.name} }

@@ -1,11 +1,10 @@
 <%= simple_form_for(@issue) do |f| %>
   <%= f.association :project, collection: Project.all, selected: cookies[:project_id] %>
-  <!-- <%= f.association :feature, collection: [] %> -->
   <%= f.association :feature, collection: Project.find_by_id(cookies[:project_id]).features, selected: :collection[0] %>
   <%= f.input :number, input_html: {class: 'span3'} %>
   <%= f.input :title, input_html: {class: 'span3'} %>
   <%= f.association :developer, collection: User.where('roles_mask = ?', '4'), selected: :collection[0] %>
-  <%= f.input :self_testing_status, collection: ['未开发','开发中','自测通过'], selected: '未开发' %>
+  <%= f.input :self_testing_status, collection: ['未开发','开发中','自测通过'] %>
   <%= f.input :self_summary, input_html: {class: 'span3', rows: 3}%>
   <%= f.association :tester, collection: User.where('roles_mask = ?', '8'), selected: :collection[0] %>
   <%= f.input :testing_status, collection: ["未测试","测试通过","测试失败"], selected: '未测试' %>
