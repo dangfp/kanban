@@ -26,6 +26,7 @@ class IssuesController < ApplicationController
   def new
     @issue = Issue.new
     @issue.self_testing_status = "未开发"
+    @issue.testing_status = "未测试"
     #@issue.developer = User.name.where('roles_mask = ?','4')
 
     @result = {}

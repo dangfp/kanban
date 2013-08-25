@@ -31,16 +31,7 @@
     <th>测试失败百分比</th>
   </tr>
   <% @results.each do |result| %>
-    <tr>
-      <td><%= link_to result[:project_name], issues_path(project_id: result[:project_id], project_name: result[:project_name]), target: "_blank" %></td>
-      <td><%= result[:issues_count_of_project] %></td>
-      <td><%= result[:not_test_issues_count_of_project] %></td>
-      <td><%= result[:not_test_issues_rate] %></td>
-      <td><%= result[:tested_successful_issues_count_of_project] %></td>
-      <td><%= result[:tested_successful_issues_rate] %></td>
-      <td><%= result[:tested_fail_issues_count_of_project] %></td>
-      <td><%= result[:tested_fail_issues_rate] %></td>
-    </tr>
+    <%= render 'test_form', result: result %>
   <% end %>
 </table>
 

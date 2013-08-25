@@ -23,6 +23,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       redirect_to admin_users_path, notice: '用户信息修改成功'
     else
