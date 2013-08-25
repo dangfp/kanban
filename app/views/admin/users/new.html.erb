@@ -1,0 +1,10 @@
+<h2>添加用户</h2>
+
+<%= simple_form_for [:admin, @user] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :roles, :collection => User.name_mapping %>
+  <%= f.submit '提交', class: 'btn' %>
+<% end %>
