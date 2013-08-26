@@ -27,7 +27,7 @@ class IssuesController < ApplicationController
     @issue = Issue.new
     @issue.self_testing_status = "未开发"
     @issue.testing_status = "未测试"
-    #@issue.developer = User.name.where('roles_mask = ?','4')
+#    @issue.developer = User.find(params[:id]).first
 
     @result = {}
     Project.all.each do |project|

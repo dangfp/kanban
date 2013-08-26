@@ -1,0 +1,17 @@
+<h2>模块列表</h2>
+
+<table class="table table-bordered">
+  <tr>
+    <th>模块名称</th>
+    <th>操作</th>
+  </tr>
+  <% @features.each do |feature| %>
+    <tr>
+      <td><%= feature.name %></td>
+      <td>
+        <%= link_to '修改', "#" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
