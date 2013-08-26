@@ -25,9 +25,13 @@ class IssuesController < ApplicationController
 
   def new
     @issue = Issue.new
+
+    #新建issue时，设置初始默认值
     @issue.self_testing_status = "未开发"
     @issue.testing_status = "未测试"
-#    @issue.developer = User.find(params[:id]).first
+    @issue.developer = User.where('roles_mask = ?', (User.mask_for :developer)).first
+    @issue.tester= User.where('roles_mask = ?', (User.mask_for :tester)).first
+    
 
     @result = {}
     Project.all.each do |project|
