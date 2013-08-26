@@ -11,6 +11,6 @@
 
 class Feature < ActiveRecord::Base
   belongs_to :project
-  has_many :issues
+  has_many :issues, dependent: :destroy
   attr_accessible :name
 end
