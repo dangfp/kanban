@@ -1,5 +1,9 @@
 <h2>用户列表</h2>
 
+<%= link_to '添加', new_admin_user_path %>
+
+<%= will_paginate @user %>
+
 <table class="table table-bordered">
   <tr>
     <th>姓名</th>
@@ -20,5 +24,5 @@
   <% end %>
 </table>
 
-<%= link_to '添加', new_admin_user_path %>
+<%= will_paginate @user %>
 

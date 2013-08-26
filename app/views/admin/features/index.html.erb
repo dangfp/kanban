@@ -1,6 +1,8 @@
 <h2>模块列表</h2>
 
 <%= link_to '添加', new_admin_project_feature_path %>
+
+<%= will_paginate @features %>
 <table class="table table-bordered">
   <tr>
     <th>模块名称</th>
@@ -17,3 +19,4 @@
   <% end %>
 </table>
 
+<%= will_paginate @features %>

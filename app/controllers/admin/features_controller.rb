@@ -3,7 +3,7 @@ class Admin::FeaturesController < Admin::ApplicationController
   def index
 
     cookies[:project_id] = params[:project_id] unless params[:project_id] == nil
-    @features = Feature.where(project_id: cookies[:project_id])
+    @features = Feature.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 10).order('id ASC')
   end
 
   def new

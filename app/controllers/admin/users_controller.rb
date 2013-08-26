@@ -1,7 +1,7 @@
 #encoding: utf-8
 class Admin::UsersController < Admin::ApplicationController
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 10).order('email ASC')
   end
 
   def new
