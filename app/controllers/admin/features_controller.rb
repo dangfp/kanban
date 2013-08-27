@@ -14,7 +14,7 @@ class Admin::FeaturesController < Admin::ApplicationController
     @feature = Feature.new(params[:feature])
     @feature.project_id = cookies[:project_id]
 
-    if @feature.save!
+    if @feature.save
       redirect_to admin_project_features_path(project_id: cookies[:project_id])
     else
       render 'new'

@@ -10,6 +10,8 @@
 
 class Project < ActiveRecord::Base
   attr_accessible :name
+  
+  # validates :name, presence: true
 
   has_many :features, dependent: :destroy
   has_many :issues, dependent: :destroy

@@ -13,4 +13,6 @@ class Feature < ActiveRecord::Base
   belongs_to :project
   has_many :issues, dependent: :destroy
   attr_accessible :name
+
+  validates :name, presence: true, length: { maximum: 30 }
 end

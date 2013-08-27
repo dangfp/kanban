@@ -1,4 +1,3 @@
-<%= simple_form_for(@issue) do |f| %>
   <%= f.association :project, collection: Project.all, selected: cookies[:project_id] %>
   <%= f.association :feature, collection: Project.find_by_id(cookies[:project_id]).features, selected: :collection[0] %>
   <%= f.input :number, input_html: {class: 'span3'} %>
@@ -11,7 +10,6 @@
   <%= f.input :testing_summary, input_html: {class: 'span3', rows: 3} %>
   <%= f.submit '提交', class: 'btn' %>
   <!-- <%= f.button :submit, class: 'btn btn-success btn-large' %> -->
-<% end %>
 
 <script>
   var features_of_selected_project = <%=raw @result.to_json %>;

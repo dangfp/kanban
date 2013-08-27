@@ -3,15 +3,17 @@
 <table class="table table-bordered">
   <tr>
     <th>项目名称</th>
+    <th>包含的模块</th>
     <th>操作</th>
   </tr>
   <% @projects.each do |project| %>
     <tr>
       <td><%= project.name %></td>
+      <td><%= link_to '详情', admin_project_features_path(project) %></td>
       <td>
         <%= link_to '修改', edit_admin_project_path(project) %>
         <%= link_to '删除', admin_project_path(project), method: :delete, confirm: '确定？' %>
-        <%= link_to '详情', admin_project_features_path(project) %>
+      </td>
     </tr>
   <% end %>
 </table>
