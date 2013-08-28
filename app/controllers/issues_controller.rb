@@ -1,6 +1,6 @@
 #encoding: utf-8
 class IssuesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index
@@ -14,6 +14,18 @@ class IssuesController < ApplicationController
       @results = @search.result
       @issues = @results.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 50)
       @issues = Issue.where(project_id: cookies[:project_id]).paginate(page: params[:page], per_page: 50) unless params[:q]
+
+      if user_signed_in?
+        if current_user.can_access_developer?
+          @issues = @results.where(project_id: cookies[:project_id],developer_id: current_user.id).paginate(page: params[:page], per_page: 50)
+          @issues = Issue.where(project_id: cookies[:project_id],developer_id: current_user.id).paginate(page: params[:page], per_page: 50) unless params[:q]
+        elsif current_user.can_access_tester?
+          @issues = @results.where(project_id: cookies[:project_id],tester_id: current_user.id).paginate(page: params[:page], per_page: 50)
+          @issues = Issue.where(project_id: cookies[:project_id],tester_id: current_user.id).paginate(page: params[:page], per_page: 50) unless params[:q]
+        end
+      end
+          
+
   end
 
   

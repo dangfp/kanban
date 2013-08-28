@@ -1,0 +1,37 @@
+<h1>统计</h1>
+
+<h2>开发相关</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>项目名称</th>
+    <th>总数</th>
+    <th>未开发数量</th>
+    <th>未开发数量百分比</th>
+    <th>开发中数量</th>
+    <th>开发中数量百分比</th>
+    <th>自测通过数量</th>
+    <th>自测通过率</th>
+  </tr>
+  
+  <% @results.each do |result| %>
+   <%= render 'develop_form', :result => result %>
+  <% end %>
+</table>
+
+<h2>测试相关</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>项目名称</th>
+    <th>总数</th>
+    <th>未测试数量</th>
+    <th>未测试数量百分比</th>
+    <th>测试通过数量</th>
+    <th>测试通过百分比</th>
+    <th>测试失败数量</th>
+    <th>测试失败百分比</th>
+  </tr>
+  <% @results.each do |result| %>
+    <%= render 'test_form', result: result %>
+  <% end %>
+</table>
+

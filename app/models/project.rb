@@ -16,4 +16,6 @@ class Project < ActiveRecord::Base
   has_many :features, dependent: :destroy
   has_many :issues, dependent: :destroy
 
+  validates :name, presence: true, length: { maximum: 30 }
+
 end

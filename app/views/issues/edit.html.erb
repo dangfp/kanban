@@ -4,7 +4,10 @@
 
 <div class = "row">
   <div class = "span2 offset2">
-    <%= render 'form' %>
+    <%= simple_form_for(@issue) do |issue| %>
+      <%= render 'shared/error_messages', object: issue.object %>
+      <%= render 'form', f: issue %>
+    <% end %>
     <%= link_to '返回', issues_path(project_id: cookies[:project_id], project_name: cookies[:project_name]) %>
   </div>
 </div>
