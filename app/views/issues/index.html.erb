@@ -20,20 +20,11 @@
     <% end %>
   </form>
 </div>
-
-<div>
-  <th>
-    <%= link_to '添加测试用例',new_issue_path(project_id: cookies[:project_id]) %>
-  </th>
-</div>
-<div class = "row">
-  <div class = "offset1">
-      <p>
-       下载:
-       <%= link_to "Excel", issues_path(format: "xls") %>
-    </p>
-  </div>
-</div>
+<p>
+  <%= link_to '添加测试用例',new_issue_path(project_id: cookies[:project_id]) %> |
+  <%= link_to "导入测试用例", new_issue_import_path %>
+</p>
+<p> 下载: <%= link_to "Excel", issues_path(format: "xls") %> </p>
 
 <%= will_paginate @issues %>
 <table class="table table-bordered">
@@ -61,13 +52,3 @@
 
 <%= will_paginate @issues %>
 
-<div class = "row">
-  <div class = "offset1">
-    <h4>导入测试用例</h4>
-
-    <%= form_tag import_issues_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "导入" %>
-    <% end %>
-  </div>
-</div>

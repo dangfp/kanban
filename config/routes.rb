@@ -7,11 +7,10 @@ Kanban::Application.routes.draw do
 
 #  resources :issues
 
-  resources :issues do
-    collection { post :import }
-  end
+  resources :issues 
+  resources :issue_imports
 
-  get 'issues/new/update_features', :as => 'update_features'
+#  get 'issues/new/update_features', :as => 'update_features'
 
   namespace :admin do
     root to: 'dashboard#index'

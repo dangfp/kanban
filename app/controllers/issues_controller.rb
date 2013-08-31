@@ -90,8 +90,4 @@ class IssuesController < ApplicationController
     redirect_to issues_path(project_id: cookies[:project_id],project_name: cookies[:project_name]), notice: '删除测试用例成功'
   end
 
-  def import
-    Issue.import(params[:file])
-    redirect_to issues_path, notice: "Issue imported."
-  end
 end
