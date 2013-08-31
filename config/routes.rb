@@ -5,7 +5,7 @@ Kanban::Application.routes.draw do
 
   root to: 'homes#index'
 
-  resources :issues
+#  resources :issues
 
   resources :issues do
     collection { post :import }

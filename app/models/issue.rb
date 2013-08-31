@@ -54,7 +54,7 @@ class Issue < ActiveRecord::Base
   validates :testing_summary, length: { maximum: 50}
   validates :self_summary, length: { maximum: 50}
 
-  #import excel
+  #export csv
   def self.to_csv(options = {})
      CSV.generate(options) do |csv|
        csv << column_names
@@ -64,6 +64,8 @@ class Issue < ActiveRecord::Base
     end
   end
 
+
+  #import excel
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)

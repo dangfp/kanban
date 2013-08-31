@@ -24,16 +24,15 @@ class IssuesController < ApplicationController
           @issues = Issue.where(project_id: cookies[:project_id],tester_id: current_user.id).paginate(page: params[:page], per_page: 50) unless params[:q]
         end
       end
-          
 
+      #export csv
+      respond_to do |format|
+        format.html
+        format.xls # { send_data @issues.to_csv(col_sep: "\t") }
+        #format.xls
+      end
   end
 
-  
-  def show 
-    #debugger
-
-    @issue = Issue.find(params[:id])
-  end
 
   def new
     @issue = Issue.new

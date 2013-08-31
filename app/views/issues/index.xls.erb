@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">项目名称</Data></Cell>
+        <Cell><Data ss:Type="String">模块</Data></Cell>
+        <Cell><Data ss:Type="String">用例编号</Data></Cell>
+        <Cell><Data ss:Type="String">测试描述</Data></Cell>
+        <Cell><Data ss:Type="String">开发负责人</Data></Cell>
+        <Cell><Data ss:Type="String">开发进度</Data></Cell>
+        <Cell><Data ss:Type="String">开发备注</Data></Cell>
+        <Cell><Data ss:Type="String">测试负责人</Data></Cell>
+        <Cell><Data ss:Type="String">测试情况</Data></Cell>
+        <Cell><Data ss:Type="String">测试备注</Data></Cell>
+      </Row>
+    <% @issues.each do |issue| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= issue.project.name%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.feature.name%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.title%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.developer.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.self_testing_status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.self_summary %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.tester.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.testing_status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= issue.testing_summary %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
