@@ -44,6 +44,7 @@ class IssuesController < ApplicationController
     @issue.tester= User.where('roles_mask = ?', (User.mask_for :tester)).first
     
 
+    #将project下的feature存入map,存入内容为feature_id和feature_name
     @result = {}
     Project.all.each do |project|
       @result[project.id] = project.features.map {|feature| {id: feature.id, name: feature.name} }

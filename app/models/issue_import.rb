@@ -47,8 +47,8 @@ class IssueImport
     case File.extname(file.original_filename)
     when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
     when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
-    when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
-    #when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore).each(project_id: Issue.project.name) {|hash| arr << hash}
+#    when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
+    when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore).parse(id: issue.id, project_id: Issue.project.name)
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
